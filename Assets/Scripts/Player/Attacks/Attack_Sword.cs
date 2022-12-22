@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class Attack_Sword : MonoBehaviour
 {
+    [Header("Params")]
+    [SerializeField] private float damage = 3;
+    [SerializeField] private Collider2D swordCollider;
+
     Vector2 rightAttackOffset;
-    Collider2D swordCollider;
 
     private void Start()
     {
-        swordCollider = GetComponent<Collider2D>();
-        rightAttackOffset = transform.localPosition; 
+        rightAttackOffset = transform.localPosition;
     }
 
     public void AttackRight()
     {
-        print("Attack R");
         swordCollider.enabled = true;
         transform.localPosition = rightAttackOffset;
     }
 
     public void AttackLeft()
     {
-        print("Attack L");
         swordCollider.enabled = true;
         transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
     }
@@ -30,5 +30,18 @@ public class Attack_Sword : MonoBehaviour
     public void StopAttack()
     {
         swordCollider.enabled = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Enemy")
+        {
+            EnemyController enemy = other.GetComponent<EnemyController>();
+            if (enemy != null)
+            {
+                enemy.Health -= damage;
+                enemy.TakeDamage();
+            }
+        }
     }
 }

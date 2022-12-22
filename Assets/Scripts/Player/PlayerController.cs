@@ -5,11 +5,27 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    bool IsMoving
+    {
+        set
+        {
+            isMoving = value;
+            animator.SetBool("isMoving", isMoving);
+        }
+    }
+
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float moveSpeed = 150f;
+    [SerializeField] private float maxSpeed = 8f;
     [SerializeField] private float collisionOffset = 0.05f;
     [SerializeField] private ContactFilter2D movementFilter;
-    bool canMove = true;
+
+    [Header("Bools")]
+    [SerializeField] private bool isMoving = false;
+    [SerializeField] private bool canMove = true;
+
+    [Header("Params")]
+    [SerializeField] private float idleFriction = 0.9f;
 
     Vector2 movementInput;
     SpriteRenderer spriteRenderer;
@@ -28,56 +44,24 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (canMove){
-            if (movementInput != Vector2.zero)
-            {
-                bool success = TryMove(movementInput);
 
-                if (!success)
-                {
-                    success = TryMove(new Vector2(movementInput.x, 0));
-                }
+        if (movementInput != Vector2.zero && canMove)
+        {
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.fixedDeltaTime), maxSpeed);
 
-                if (!success)
-                {
-                    success = TryMove(new Vector2(0, movementInput.y));
-                }
-
-                animator.SetBool("isMoving", success);
-            }
-            else
-            {
-                animator.SetBool("isMoving", false);
-            }
-
-            if (movementInput.x < 0)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else if (movementInput.x > 0)
+            if (movementInput.x > 0)
             {
                 spriteRenderer.flipX = false;
+            } else if (movementInput.x < 0) {
+                spriteRenderer.flipX = true;
             }
-        }
-    }
 
-    private bool TryMove(Vector2 direction)
-    {
-        if (direction != Vector2.zero)
-        {
-            int count = rb.Cast(direction, movementFilter, castCollisions, moveSpeed * Time.fixedDeltaTime + collisionOffset);
-            if (count == 0)
-            {
-                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        } else
-        {
-            return false;
+            IsMoving = true;
+
+        } else {
+            rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, idleFriction);
+
+            IsMoving = false;
         }
     }
 
@@ -112,5 +96,11 @@ public class PlayerController : MonoBehaviour
     public void UnlockMovement()
     {
         canMove = true;
+    }
+
+    public void StopAttack()
+    {
+        UnlockMovement();
+        attack_Sword.StopAttack();
     }
 }
