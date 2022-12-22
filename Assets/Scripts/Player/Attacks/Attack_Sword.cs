@@ -10,21 +10,21 @@ public class Attack_Sword : MonoBehaviour
     private void Start()
     {
         swordCollider = GetComponent<Collider2D>();
-        rightAttackOffset = transform.position;
+        rightAttackOffset = transform.localPosition; 
     }
 
     public void AttackRight()
     {
         print("Attack R");
         swordCollider.enabled = true;
-        transform.position = rightAttackOffset;
+        transform.localPosition = rightAttackOffset;
     }
 
     public void AttackLeft()
     {
         print("Attack L");
         swordCollider.enabled = true;
-        transform.position = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
+        transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
     }
 
     public void StopAttack()
