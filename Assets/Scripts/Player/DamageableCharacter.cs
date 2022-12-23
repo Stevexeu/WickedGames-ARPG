@@ -4,12 +4,13 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, I_Damageable
+public class DamageableCharacter : MonoBehaviour, I_Damageable
 {
     [Header("Enemy Stats")]
     [SerializeField] private float _health = 9;
     [SerializeField] private bool isAlive = true;
     [SerializeField] public bool _targetable = true;
+    [SerializeField] private bool disablesSimulation = false;
 
     Animator animator;
     Rigidbody2D rb;
@@ -38,11 +39,17 @@ public class EnemyController : MonoBehaviour, I_Damageable
         }
     }
 
-    public bool Targetable { get { return _targetable; }
+    public bool Targetable
+    {
+        get { return _targetable; }
         set
         {
             _targetable = value;
-            rb.simulated = value;
+
+            if (disablesSimulation)
+            {
+                rb.simulated = false;
+            }
             physicsCollider.enabled = value;
         }
     }

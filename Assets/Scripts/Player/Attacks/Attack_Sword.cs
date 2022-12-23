@@ -27,8 +27,8 @@ public class Attack_Sword : MonoBehaviour
 
         if(damageableObject != null)
         {
-            Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
-            Vector2 direction = (Vector2) (col.gameObject.transform.position - parentPosition).normalized;
+            Vector3 parentPosition = transform.parent.position;
+            Vector2 direction = (col.transform.position - parentPosition).normalized;
             Vector2 knockback = direction * _knockback;
 
             damageableObject.OnHit(_damage, knockback);

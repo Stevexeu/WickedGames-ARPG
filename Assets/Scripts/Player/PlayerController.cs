@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (movementInput != Vector2.zero && canMove)
+        if (movementInput != Vector2.zero && canMove && rb.simulated)
         {
             rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.fixedDeltaTime), maxSpeed);
 
@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
             IsMoving = false;
         }
+
     }
 
     void OnMove(InputValue movementValue)
