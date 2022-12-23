@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Attack_Sword : MonoBehaviour
 {
-    [Header("Params")]
-    [SerializeField] private float damage = 3;
+    [Header("Settings")]
+    [SerializeField] private float _damage = 3;
+    [SerializeField] private float _knockback = 50;
+
+    [Header("Params & Bools")]
     [SerializeField] private Collider2D swordCollider;
+    [SerializeField] private Vector3 faceRight = new Vector3(0.6f, 0.02f, 0f);
+    [SerializeField] private Vector3 faceLeft = new Vector3(-0.6f, -0.02f, 0f);
 
     void Start()
     {
@@ -16,8 +21,31 @@ public class Attack_Sword : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        col.collider.SendMessage("OnHit", damage); 
+        I_Damageable damageableObject = col.GetComponent<I_Damageable>();
+
+        if(damageableObject != null)
+        {
+            Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
+            Vector2 direction = (Vector2) (col.gameObject.transform.position - parentPosition).normalized;
+            Vector2 knockback = direction * _knockback;
+
+            damageableObject.OnHit(_damage, knockback);
+
+        } else {
+            Debug.LogWarning("Collider " + col + " does not implement IDamageable");
+        }
+    }
+
+    void IsFacingRight(bool isFacingRight)
+    {
+        if (isFacingRight)
+        {
+            gameObject.transform.localPosition = faceRight;
+        } else
+        {
+            gameObject.transform.localPosition = faceLeft;
+        }
     }
 }
