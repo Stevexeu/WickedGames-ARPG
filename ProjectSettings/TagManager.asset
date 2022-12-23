@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemies/Slime
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -49,6 +51,9 @@ TagManager:
     locked: 0
   - name: CollisionObjects
     uniqueID: 3626539411
+    locked: 0
+  - name: Enemies
+    uniqueID: 1873351385
     locked: 0
   - name: Player
     uniqueID: 3621746755

@@ -32,14 +32,16 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     Animator animator;
+    Collider2D swordCollider;
 
-    public Attack_Sword attack_Sword;
+    public GameObject swordHitbox;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        swordCollider = swordHitbox.GetComponent<Collider2D>();
     }
 
     private void FixedUpdate()
@@ -75,19 +77,6 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("swordAttack");
     }
 
-    public void AttackSword()
-    {
-        LockMovement();
-        if(spriteRenderer.flipX == true)
-        {
-            attack_Sword.AttackLeft();
-        }
-        else
-        {
-            attack_Sword.AttackRight();
-        }
-    }
-
     public void LockMovement()
     {
         canMove = false;
@@ -96,11 +85,5 @@ public class PlayerController : MonoBehaviour
     public void UnlockMovement()
     {
         canMove = true;
-    }
-
-    public void StopAttack()
-    {
-        UnlockMovement();
-        attack_Sword.StopAttack();
     }
 }
