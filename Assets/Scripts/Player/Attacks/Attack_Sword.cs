@@ -8,7 +8,7 @@ public class Attack_Sword : MonoBehaviour
     [SerializeField] private float damage = 3;
     [SerializeField] private Collider2D swordCollider;
 
-    private void Start()
+    void Start()
     {
         if(swordCollider == null)
         {
@@ -16,7 +16,7 @@ public class Attack_Sword : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         col.collider.SendMessage("OnHit", damage); 
     }
