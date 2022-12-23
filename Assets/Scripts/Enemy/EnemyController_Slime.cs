@@ -16,6 +16,7 @@ public class EnemyController_Slime : MonoBehaviour
         if(damageable != null)
         {
             damageable.OnHit(_damage);
+
         }
     }
 }
