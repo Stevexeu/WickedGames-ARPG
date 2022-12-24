@@ -65,7 +65,8 @@ public class DamageableCharacter : MonoBehaviour, I_Damageable
     public void OnHit(float damage, Vector2 knockback)
     {
         Health -= damage;
-        rb.AddForce(knockback);
+        rb.AddForce(knockback, ForceMode2D.Impulse);
+        Debug.Log("Force");
     }
 
     public void OnHit(float damage)

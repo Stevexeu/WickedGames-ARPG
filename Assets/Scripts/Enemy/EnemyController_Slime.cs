@@ -8,14 +8,19 @@ public class EnemyController_Slime : MonoBehaviour
 {
     [Header("Enemy Stats")]
     [SerializeField] private float _damage = 1;
+    [SerializeField] private float _knockback = 500f;
 
     public void OnCollisionEnter2D(Collision2D col)
     {
-        I_Damageable damageable = col.collider.GetComponent<I_Damageable>();
+        Collider2D collider = col.collider;
+        I_Damageable damageable = collider.GetComponent<I_Damageable>();
 
         if(damageable != null)
         {
-            damageable.OnHit(_damage);
+            Vector2 direction = (collider.transform.position - transform.position).normalized;
+            Vector2 knockback = direction * _knockback;
+
+            damageable.OnHit(_damage, knockback);
 
         }
     }
