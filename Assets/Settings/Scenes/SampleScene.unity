@@ -9802,6 +9802,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
+--- !u!1 &1238754356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7532914673663299511, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
+  m_PrefabInstance: {fileID: 1653352770657103027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1562610606
 GameObject:
   m_ObjectHideFlags: 0
@@ -9921,11 +9926,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 743482104622711509, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: moveSpeed
-      value: 150
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 743482104622711509, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
+      propertyPath: swordHitbox
+      value: 
+      objectReference: {fileID: 1238754356}
+    - target: {fileID: 743482104622711509, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: collisionOffset
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1168356108120790226, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_SortingLayer
@@ -9941,11 +9950,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2971027182719284054, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2971027182719284054, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_Simulated
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2971027182719284054, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2971027182719284054, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2971027182719284054, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_Constraints
@@ -9953,6 +9970,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2971027182719284054, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2971027182719284054, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
+      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2971027182719284054, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}

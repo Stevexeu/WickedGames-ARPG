@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 600
-  maxSpeed: 8
+  maxSpeed: 4
   collisionOffset: 0.01
   movementFilter:
     useTriggers: 0
