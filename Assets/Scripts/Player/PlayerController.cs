@@ -1,3 +1,4 @@
+using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 150f;
+    [SerializeField] private float moveSpeed = 600f;
     [SerializeField] private float maxSpeed = 8f;
     [SerializeField] private float collisionOffset = 0.05f;
     [SerializeField] private ContactFilter2D movementFilter;
@@ -49,7 +50,14 @@ public class PlayerController : MonoBehaviour
 
         if (movementInput != Vector2.zero && canMove && rb.simulated)
         {
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.fixedDeltaTime), maxSpeed);
+            //rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.fixedDeltaTime), maxSpeed);
+            rb.AddForce(movementInput * moveSpeed * Time.deltaTime);
+
+            if(rb.velocity.magnitude > maxSpeed)
+            {
+                float limitedSpeed = Mathf.Lerp(rb.velocity.magnitude, maxSpeed, idleFriction);
+                rb.velocity = rb.velocity.normalized * limitedSpeed;
+            }
 
             if (movementInput.x > 0)
             {
