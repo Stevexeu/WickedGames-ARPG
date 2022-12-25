@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class Detection : MonoBehaviour
 {
-    public List<GameObject> detectedObjs;
-    Collider2D col;
+    [Header("References")]
+    [SerializeField] private string tagTarget = "Player";
+    [SerializeField] private List<Collider2D> detectedObjs = new List<Collider2D>();
+    [SerializeField] private Collider2D col;
 
-    private void Start()
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        col.GetComponent<Collider2D>();
+        if(collider.gameObject.tag == tagTarget)
+        {
+            detectedObjs.Add(collider);
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerExit2D(Collider2D collider)
     {
-        
+        if (collider.gameObject.tag == tagTarget)
+        {
+            detectedObjs.Remove(collider);
+        }
     }
 }
