@@ -8666,7 +8666,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.4481397, y: 0.38330317, z: -9.958556}
+  m_LocalPosition: {x: 0.6018605, y: 1.7733032, z: -9.958556}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8975,7 +8975,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050362066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.4481397, y: 0.38330317, z: -9.958556}
+  m_LocalPosition: {x: 0.6018605, y: 1.7733032, z: -9.958556}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9802,11 +9802,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
---- !u!1 &1238754356 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7532914673663299511, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
-  m_PrefabInstance: {fileID: 1653352770657103027}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1562610606
 GameObject:
   m_ObjectHideFlags: 0
@@ -9925,16 +9920,12 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 743482104622711509, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
-      propertyPath: moveSpeed
-      value: 600
+      propertyPath: maxSpeed
+      value: 5.3
       objectReference: {fileID: 0}
     - target: {fileID: 743482104622711509, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
-      propertyPath: swordHitbox
-      value: 
-      objectReference: {fileID: 1238754356}
-    - target: {fileID: 743482104622711509, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: collisionOffset
-      value: 0.05
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1168356108120790226, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_SortingLayer
@@ -9958,11 +9949,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2971027182719284054, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_LinearDrag
-      value: 0.75
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2971027182719284054, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_AngularDrag
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2971027182719284054, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_Constraints
@@ -9994,11 +9985,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781881478509863030, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.05
       objectReference: {fileID: 0}
     - target: {fileID: 3781881478509863030, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.39
       objectReference: {fileID: 0}
     - target: {fileID: 3781881478509863030, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_LocalPosition.z
