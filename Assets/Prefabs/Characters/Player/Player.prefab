@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 600
   maxSpeed: 4
-  collisionOffset: 0.01
+  collisionOffset: 0.05
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
