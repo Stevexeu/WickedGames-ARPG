@@ -9745,6 +9745,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4462373768591781375, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
+      propertyPath: _nextShot
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462373768591781375, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
       propertyPath: _followColliderSize
       value: 6
       objectReference: {fileID: 0}
@@ -9865,6 +9869,10 @@ PrefabInstance:
     - target: {fileID: 4462373768591781375, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
       propertyPath: health
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462373768591781375, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
+      propertyPath: _nextShot
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5152852589272860753, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
       propertyPath: m_Name
@@ -10092,6 +10100,10 @@ PrefabInstance:
       propertyPath: health
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4462373768591781375, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
+      propertyPath: _nextShot
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5152852589272860753, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
       propertyPath: m_Name
       value: Slime
@@ -10102,11 +10114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5152852589272860759, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.61
+      value: -6.97
       objectReference: {fileID: 0}
     - target: {fileID: 5152852589272860759, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.68
       objectReference: {fileID: 0}
     - target: {fileID: 5152852589272860759, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
       propertyPath: m_LocalPosition.z

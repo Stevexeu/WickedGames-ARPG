@@ -79,4 +79,10 @@ public class DamageableCharacter : MonoBehaviour, I_Damageable
     {
         Destroy(gameObject);
     }
+
+    public void OnHit(Vector2 knockback)
+    {
+        rb.AddForce(knockback, ForceMode2D.Impulse);
+        Debug.Log("Force");
+    }
 }
