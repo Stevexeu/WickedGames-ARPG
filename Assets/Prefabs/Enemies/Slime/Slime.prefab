@@ -53,7 +53,10 @@ MonoBehaviour:
   _damage: 1
   _knockback: 50
   _moveSpeed: 2000
+  _followColliderSize: 12
+  _normalColliderSize: 4.2
   detection: {fileID: 6932983677074176603}
+  character: {fileID: 0}
 --- !u!114 &3163291253377955247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +73,9 @@ MonoBehaviour:
   isAlive: 1
   _targetable: 1
   disablesSimulation: 0
+  priority: 0
+  useAttackCooldown: 0
+  attackCooldown: 3
 --- !u!212 &5152852589272860758
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -243,4 +249,3 @@ MonoBehaviour:
   tagTarget: Player
   detectedObjs: []
   col: {fileID: 1814520621866025399}
-  circle: {fileID: 1814520621866025399}

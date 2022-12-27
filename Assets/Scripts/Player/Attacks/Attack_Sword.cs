@@ -32,9 +32,6 @@ public class Attack_Sword : MonoBehaviour
             Vector2 knockback = direction * _knockback;
 
             damageableObject.OnHit(_damage, knockback);
-
-        } else {
-            Debug.LogWarning("Collider " + col + " does not implement IDamageable");
         }
     }
 

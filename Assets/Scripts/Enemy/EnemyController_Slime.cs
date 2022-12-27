@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,10 +15,12 @@ public class EnemyController_Slime : MonoBehaviour
     [SerializeField] private float _normalColliderSize = 4.2f;
     public Detection detection;
     private Rigidbody2D rb;
+    public DamageableCharacter character;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        character = GetComponent<DamageableCharacter>();
     }
 
     void FixedUpdate()
@@ -39,13 +42,17 @@ public class EnemyController_Slime : MonoBehaviour
         Collider2D collider = col.collider;
         I_Damageable damageable = collider.GetComponent<I_Damageable>();
 
-        if(damageable != null)
+        if (damageable != null)
         {
-            Vector2 direction = (collider.transform.position - transform.position).normalized;
-            Vector2 knockback = direction * _knockback;
+            {
+                Vector2 direction = (collider.transform.position - transform.position).normalized;
 
-            damageable.OnHit(_damage, knockback);
-
+                if (col.gameObject.GetComponent<DamageableCharacter>().priority > 0)
+                {
+                    Vector2 knockback = direction * _knockback;
+                    damageable.OnHit(_damage, knockback);
+                }
+            }
         }
     }
 }

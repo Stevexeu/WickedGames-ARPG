@@ -9724,6 +9724,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1814520621866025399, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
+      propertyPath: m_Radius
+      value: 2.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2147234009302252328, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -9739,6 +9743,14 @@ PrefabInstance:
     - target: {fileID: 4462373768591781375, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
       propertyPath: health
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462373768591781375, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
+      propertyPath: _followColliderSize
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462373768591781375, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
+      propertyPath: _normalColliderSize
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 5152852589272860753, guid: f882a08ce3dfdd04eb1e24cb31783af3, type: 3}
       propertyPath: m_Name
@@ -10025,7 +10037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5817426775329022719, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: _knockback
-      value: 5000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7532914673663299511, guid: fa4f4b5cde2230848a3bf163ad0046b2, type: 3}
       propertyPath: m_IsActive

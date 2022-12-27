@@ -89,6 +89,7 @@ MonoBehaviour:
   isAlive: 1
   _targetable: 1
   disablesSimulation: 1
+  priority: 1
 --- !u!114 &500884826343004710
 MonoBehaviour:
   m_ObjectHideFlags: 0

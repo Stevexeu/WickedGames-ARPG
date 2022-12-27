@@ -11,6 +11,7 @@ public class DamageableCharacter : MonoBehaviour, I_Damageable
     [SerializeField] private bool isAlive = true;
     [SerializeField] public bool _targetable = true;
     [SerializeField] private bool disablesSimulation = false;
+    [SerializeField] public float priority = 0;
 
     Animator animator;
     Rigidbody2D rb;
