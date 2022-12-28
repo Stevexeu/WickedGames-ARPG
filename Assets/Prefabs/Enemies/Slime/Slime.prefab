@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5152852589272860759}
   - component: {fileID: 3163291253377955247}
-  - component: {fileID: 6724688245118811330}
   - component: {fileID: 5152852589272860758}
   - component: {fileID: 4901383489218529021}
   - component: {fileID: 1592685088485212113}
@@ -55,25 +54,6 @@ MonoBehaviour:
   _targetable: 1
   disablesSimulation: 0
   priority: 0
---- !u!114 &6724688245118811330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5152852589272860753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0a4e9a47d6f78f479e82f7647f0d070, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 1
-  _knockback: 50
-  _moveSpeed: 2000
-  _followColliderSize: 12
-  _normalColliderSize: 4.2
-  detection: {fileID: 6932983677074176603}
-  character: {fileID: 0}
 --- !u!212 &5152852589272860758
 SpriteRenderer:
   m_ObjectHideFlags: 0
