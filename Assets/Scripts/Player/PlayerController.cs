@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 600f;
     [SerializeField] private float maxSpeed = 4f;
-    [SerializeField] private float collisionOffset = 0.05f;
     [SerializeField] private ContactFilter2D movementFilter;
 
     [Header("Bools")]
