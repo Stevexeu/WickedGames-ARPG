@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -9,6 +10,11 @@ public class Pathfinding : MonoBehaviour
 {
     private const int MOVE_STRAIGHT_COST = 10;
     private const int MOVE_DIAGONAL_COST = 14;
+
+    private void Start()
+    {
+        FindPath(new int2(0, 0), new int2(3, 1));
+    }
 
     private void FindPath(int2 startPosition, int2 endPosition)
     {
@@ -35,6 +41,21 @@ public class Pathfinding : MonoBehaviour
                 pathNodeArray[pathNode.index] = pathNode;
             }
         }
+
+        {
+            PathNode walkablePathNode = pathNodeArray[CalculateIndex(1, 0, gridSize.x)];
+            walkablePathNode.SetIsWalkable(false);
+            pathNodeArray[CalculateIndex(1, 0, gridSize.x)] = walkablePathNode;
+
+            walkablePathNode = pathNodeArray[CalculateIndex(1, 1, gridSize.x)];
+            walkablePathNode.SetIsWalkable(false);
+            pathNodeArray[CalculateIndex(1, 1, gridSize.x)] = walkablePathNode;
+
+            walkablePathNode = pathNodeArray[CalculateIndex(1, 2, gridSize.x)];
+            walkablePathNode.SetIsWalkable(false);
+            pathNodeArray[CalculateIndex(1, 2, gridSize.x)] = walkablePathNode;
+        }
+
         NativeArray<int2> neighbourOffsetArray = new NativeArray<int2>(new int2[]
         {
             new int2(-1, 0),
@@ -121,11 +142,48 @@ public class Pathfinding : MonoBehaviour
             }
         }
 
+        PathNode endNode = pathNodeArray[endNodeIndex];
+        if(endNode.cameFromNodeIndex == -1)
+        {
+            Debug.Log("Didn't find a path!");
+        }else
+        {
+            NativeArray<int2> path = CalculatePath(pathNodeArray, endNode);
+
+            foreach (int2 pathPosition in path)
+            {
+                Debug.Log(pathPosition);
+            }
+            path.Dispose();
+        }
+
         pathNodeArray.Dispose();
         neighbourOffsetArray.Dispose();
         openList.Dispose();
         closedList.Dispose();
 
+    }
+
+    private NativeList<int2> CalculatePath(NativeArray<PathNode> pathNodeArray, PathNode endNode)
+    {
+        if (endNode.cameFromNodeIndex == -1)
+        {
+            return new NativeList<int2>(Allocator.Temp);
+        } else
+        {
+            NativeList<int2> path = new NativeList<int2>(Allocator.Temp);
+            path.Add(new int2(endNode.x, endNode.y));
+
+            PathNode currentNode = endNode;
+            while (currentNode.cameFromNodeIndex != 1)
+            {
+                PathNode cameFromNode = pathNodeArray[currentNode.cameFromNodeIndex];
+                path.Add(new int2(cameFromNode.x, cameFromNode.y));
+                currentNode = cameFromNode;
+            }
+
+            return path;
+        }
     }
 
     private bool IsPositionInsideGrid(int2 gridPosition, int2 gridSize)
@@ -180,6 +238,10 @@ public class Pathfinding : MonoBehaviour
         public void CalculateFCost()
         {
             fCost = gCost + hCost;
+        }
+        public void SetIsWalkable(bool isWalkable)
+        {
+            this.isWalkable = isWalkable;
         }
     }
 }
