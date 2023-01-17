@@ -6,7 +6,9 @@ using wickedgames;
 public class EnemyCore : MonoBehaviour
 {
     [Header("References")]
-    DamageableCharacter _damageableCharacter;
+    Animator animator;
+    public PlayerController _playerController;
+    public Rigidbody2D body;
 
     [Header("Attack Range")]
     [SerializeField] public string _tagTarget = "Player";
@@ -22,20 +24,16 @@ public class EnemyCore : MonoBehaviour
 
     [Header("Booleans")]
     [SerializeField] public bool _inDamageRange = false;
+    [SerializeField] public bool isAlive = true;
     [SerializeField] public bool _attackAvailible = true;
 
     [Header("Enemy Stats")]
-    [SerializeField] public bool isAlive = true;
     [SerializeField] public float _enemyHealth;
 
-    Animator animator;
-    public PlayerController _playerController;
-    public Rigidbody2D body;
 
     private void Start()
     {
         _crit = _damage * _critMultiplier;
-        _damageableCharacter = GetComponent<DamageableCharacter>();
         animator = GetComponent<Animator>();
         animator.SetBool("isAlive", isAlive);
         Detection detection = GetComponent<Detection>();
@@ -72,6 +70,27 @@ public class EnemyCore : MonoBehaviour
             Debug.Log($"Attacking with: {_damage} and {_crit} Crit damage, with a multiplier of {_critMultiplier}");
             StartCoroutine(StartCooldown());
         }
+    }
+
+    public void TakeDamage(float value)
+    {
+        if (_enemyHealth < 1)
+        {
+            Death();
+        }
+
+        animator.SetTrigger("takeDamage");
+        _enemyHealth -= value;
+    }
+
+    public void Death()
+    {
+        animator.SetBool("isAlive", false);
+    }
+
+    public void Destroy()
+    {
+        GameObject.Destroy(gameObject);
     }
 
 }

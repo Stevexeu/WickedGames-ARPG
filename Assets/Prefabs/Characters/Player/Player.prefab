@@ -72,6 +72,7 @@ MonoBehaviour:
   idleFriction: 0.9
   swordHitbox: {fileID: 7532914673663299511}
   isAlive: 1
+  _health: 0
 --- !u!114 &500884826343004710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +279,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3191961699021991048}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -342,8 +343,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7532914673663299511}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0.02, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.1999998, y: 0.03999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -357,7 +358,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7532914673663299511}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -389,7 +390,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 3
+  _critMultiplier: 0
   _knockback: 1
   swordCollider: {fileID: 9121758387330128798}
   faceRight: {x: 0.6, y: 0.02, z: 0}
   faceLeft: {x: -0.6, y: -0.02, z: 0}
+  tagTarget: Enemy
+  defaultRadius: 0
+  critRadius: 0
+  detectedObjs: []
+  col: {fileID: 9121758387330128798}
+  ec: {fileID: 0}
