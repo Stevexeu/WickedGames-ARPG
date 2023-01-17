@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3781881478509863030}
   - component: {fileID: 743482104622711509}
-  - component: {fileID: 470056034899979230}
   - component: {fileID: 500884826343004710}
   - component: {fileID: 1168356108120790226}
   - component: {fileID: 756660383658478686}
@@ -72,23 +71,7 @@ MonoBehaviour:
   canMove: 1
   idleFriction: 0.9
   swordHitbox: {fileID: 7532914673663299511}
---- !u!114 &470056034899979230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3191961699021991048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eea5116501c01194991d77f8ee69facb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 3
   isAlive: 1
-  _targetable: 1
-  disablesSimulation: 1
-  priority: 1
 --- !u!114 &500884826343004710
 MonoBehaviour:
   m_ObjectHideFlags: 0

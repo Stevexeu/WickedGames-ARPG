@@ -36,15 +36,20 @@ public class PlayerController : MonoBehaviour
 
     public GameObject swordHitbox;
 
-    private void Start()
+    [Header("Player Stats")]
+    [SerializeField] public bool isAlive = true;
+    [SerializeField] public float _health;
+
+    public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         swordCollider = swordHitbox.GetComponent<Collider2D>();
+        animator.SetBool("isAlive", isAlive);
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
 
         if (movementInput != Vector2.zero && canMove && rb.simulated)
@@ -77,6 +82,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (_health < 1)
+        {
+            Death();
+        }
+    }
+
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
@@ -95,5 +108,23 @@ public class PlayerController : MonoBehaviour
     public void UnlockMovement()
     {
         canMove = true;
+    }
+
+    public void TakeDamage(float value)
+    {
+        if (value > _health)
+        {
+            Death();
+        }
+
+        animator.SetTrigger("takeDamage");
+        _health -= value;
+    }
+
+    public void Death()
+    {
+        canMove = false;
+        isAlive = false;
+        animator.SetBool("isAlive", false);
     }
 }

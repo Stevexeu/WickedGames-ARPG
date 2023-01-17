@@ -31,7 +31,7 @@ public class Attack_Sword : MonoBehaviour
             Vector2 direction = (col.transform.position - parentPosition).normalized;
             Vector2 knockback = direction * _knockback;
 
-            damageableObject.OnHit(_damage, knockback);
+            damageableObject.OnHitKnockback(_damage, knockback);
         }
     }
 
