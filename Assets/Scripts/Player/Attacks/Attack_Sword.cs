@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.iOS;
 
 public class Attack_Sword : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float _damage = 3;
-    [SerializeField] private float _critMultiplier = 0;
-    [SerializeField] private float _knockback = 50;
+    [SerializeField] public float _damage = 3;
+    [SerializeField] public float _critMultiplier = 0;
+    [SerializeField] public float _knockback = 50;
 
     [Header("Params & Bools")]
     [SerializeField] private Collider2D swordCollider;
@@ -20,7 +21,6 @@ public class Attack_Sword : MonoBehaviour
     [SerializeField] public float critRadius;
     [SerializeField] public List<Collider2D> detectedObjs = new List<Collider2D>();
     [SerializeField] public BoxCollider2D col;
-    [SerializeField] EnemyCore ec;
 
     void Start()
     {
@@ -36,15 +36,25 @@ public class Attack_Sword : MonoBehaviour
         {
             float _crit = _damage * _critMultiplier;
             detectedObjs.Add(collider);
+
             if (_critMultiplier > 0)
             {
-                ec.TakeDamage(_damage * _critMultiplier);
+                collider.gameObject.GetComponent<EnemyCore>().TakeDamage(_crit);
                 Debug.Log($"Attacking with: {_damage} and {_crit} Crit damage, with a multiplier of {_critMultiplier} and a knockback force of {_knockback}");
+                if (_knockback > 0)
+                {
+                    //Knockback Code Insert
+                }
             }
+
             else
             {
-                ec.TakeDamage(_damage);
+                collider.gameObject.GetComponent<EnemyCore>().TakeDamage(_damage);
                 Debug.Log($"Attacking with: {_damage} and {_crit} Crit damage, with a multiplier of {_critMultiplier} and a knockback force of {_knockback}");
+                if (_knockback > 0)
+                {
+                    //Knockback Code Insert
+                }
             }
         }
     }

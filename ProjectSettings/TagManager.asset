@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemies/Slime
   - Enemy
+  - Canvas
   layers:
   - Default
   - TransparentFX
@@ -57,4 +58,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3621746755
+    locked: 0
+  - name: UI
+    uniqueID: 468875129
     locked: 0

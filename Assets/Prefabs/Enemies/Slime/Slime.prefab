@@ -48,7 +48,7 @@ MonoBehaviour:
   tagTarget: Player
   detectedObjs: []
   col: {fileID: 4084930140238234752}
-  enemyCore: {fileID: 0}
+  enemyCore: {fileID: 7600515911633401276}
 --- !u!61 &4084930140238234752
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0.88
+  m_EdgeRadius: 0.34
 --- !u!1 &5152852589272860753
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,10 +235,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131201f7fa61e434fbf21cb910fe26b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detection: {fileID: 0}
+  detection: {fileID: 1453878009114157119}
+  animator: {fileID: 1592685088485212113}
   _playerController: {fileID: 0}
   body: {fileID: 4622705214395231108}
   playerTransform: {fileID: 0}
+  damageTextPrefab: {fileID: 8857794548365193588, guid: 5288ab95bf487cd458ac8dc58bb44ac8, type: 3}
+  enemyInstance: {fileID: 5152852589272860753}
+  floatDamageNumber: 0
   _tagTarget: Player
   _defaultRadius: 5.3
   _critRadius: 24.27
@@ -251,7 +255,8 @@ MonoBehaviour:
   _isAlive: 1
   _attackAvailible: 1
   _canFollow: 0
-  _enemyHealth: 5
+  _enemyHealth: 300
+  _enemyShield: 0
 --- !u!195 &8969043980981128164
 NavMeshAgent:
   m_ObjectHideFlags: 0

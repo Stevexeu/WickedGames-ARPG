@@ -1,5 +1,8 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,11 +10,14 @@ public class EnemyCore : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] Detection detection;
-    Animator animator;
+    public Animator animator;
     public PlayerController _playerController;
     public Rigidbody2D body;
     public Transform playerTransform;
     NavMeshAgent agent;
+    public GameObject damageTextPrefab, enemyInstance;
+    public float floatDamageNumber = 0;
+    public Attack_Sword attackSword;
 
     [Header("Attack Range")]
     [SerializeField] public string _tagTarget = "Player";
@@ -33,6 +39,7 @@ public class EnemyCore : MonoBehaviour
 
     [Header("Enemy Stats")]
     [SerializeField] public float _enemyHealth;
+    [SerializeField] public float _enemyShield;
 
 
     private void Start()
@@ -44,6 +51,7 @@ public class EnemyCore : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        _enemyHealth += _enemyShield;
     }
 
     public void Update()
@@ -91,7 +99,11 @@ public class EnemyCore : MonoBehaviour
 
     public void TakeDamage(float value)
     {
+        floatDamageNumber = value;
+        GameObject DamageTextInstance = Instantiate(damageTextPrefab, enemyInstance.transform);
+        DamageTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText($"{floatDamageNumber}");
         animator.SetTrigger("takeDamage");
+
         _enemyHealth -= value;
 
         if (_enemyHealth < 1)
@@ -108,6 +120,11 @@ public class EnemyCore : MonoBehaviour
     public void Destroy()
     {
         GameObject.Destroy(gameObject);
+    }
+
+    public void Knockback()
+    {
+        //Knockback Code Insert
     }
 
     public void startFollow()
