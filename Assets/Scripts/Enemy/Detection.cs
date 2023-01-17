@@ -10,14 +10,15 @@ public class Detection : MonoBehaviour
     [SerializeField] public List<Collider2D> detectedObjs = new List<Collider2D>();
     [SerializeField] public CircleCollider2D col;
     [SerializeField] EnemyCore ec;
+    [SerializeField] public bool canFollow = false;
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == tagTarget)
         {
             detectedObjs.Add(collider);
-            ec.Unfreeze();
             col.radius = followRadius;
+            ec.startFollow();
         }
     }
 
@@ -26,8 +27,8 @@ public class Detection : MonoBehaviour
         if (collider.gameObject.tag == tagTarget)
         {
             detectedObjs.Remove(collider);
-            ec.Freeze();
             col.radius = defaultRadius;
+            ec.stopFollow();
         }
     }
 }

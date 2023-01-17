@@ -36,8 +36,16 @@ public class Attack_Sword : MonoBehaviour
         {
             float _crit = _damage * _critMultiplier;
             detectedObjs.Add(collider);
-            ec.TakeDamage(_damage);
-            Debug.Log($"Attacking with: {_damage} and {_crit} Crit damage, with a multiplier of {_critMultiplier} and a knockback force of {_knockback}");
+            if (_critMultiplier > 0)
+            {
+                ec.TakeDamage(_damage * _critMultiplier);
+                Debug.Log($"Attacking with: {_damage} and {_crit} Crit damage, with a multiplier of {_critMultiplier} and a knockback force of {_knockback}");
+            }
+            else
+            {
+                ec.TakeDamage(_damage);
+                Debug.Log($"Attacking with: {_damage} and {_crit} Crit damage, with a multiplier of {_critMultiplier} and a knockback force of {_knockback}");
+            }
         }
     }
 

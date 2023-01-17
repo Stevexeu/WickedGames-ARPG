@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using wickedgames;
+using UnityEngine.AI;
 
 public class EnemyCore : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] Detection detection;
     Animator animator;
     public PlayerController _playerController;
     public Rigidbody2D body;
+    public Transform playerTransform;
+    NavMeshAgent agent;
 
     [Header("Attack Range")]
     [SerializeField] public string _tagTarget = "Player";
@@ -24,8 +27,9 @@ public class EnemyCore : MonoBehaviour
 
     [Header("Booleans")]
     [SerializeField] public bool _inDamageRange = false;
-    [SerializeField] public bool isAlive = true;
+    [SerializeField] public bool _isAlive = true;
     [SerializeField] public bool _attackAvailible = true;
+    [SerializeField] public bool _canFollow = false;
 
     [Header("Enemy Stats")]
     [SerializeField] public float _enemyHealth;
@@ -35,14 +39,27 @@ public class EnemyCore : MonoBehaviour
     {
         _crit = _damage * _critMultiplier;
         animator = GetComponent<Animator>();
-        animator.SetBool("isAlive", isAlive);
+        animator.SetBool("isAlive", _isAlive);
         Detection detection = GetComponent<Detection>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     public void Update()
     {
         if (_inDamageRange && _attackAvailible == true)
             ApplyDamage();
+
+        if (_canFollow)
+        {
+            agent.SetDestination(playerTransform.position);
+        }
+
+        if (!_canFollow)
+        {
+            agent.ResetPath();
+        }
     }
 
     public void Freeze()
@@ -74,13 +91,13 @@ public class EnemyCore : MonoBehaviour
 
     public void TakeDamage(float value)
     {
+        animator.SetTrigger("takeDamage");
+        _enemyHealth -= value;
+
         if (_enemyHealth < 1)
         {
             Death();
         }
-
-        animator.SetTrigger("takeDamage");
-        _enemyHealth -= value;
     }
 
     public void Death()
@@ -91,6 +108,16 @@ public class EnemyCore : MonoBehaviour
     public void Destroy()
     {
         GameObject.Destroy(gameObject);
+    }
+
+    public void startFollow()
+    {
+        _canFollow = true;
+    }
+
+    public void stopFollow()
+    {
+        _canFollow = false;
     }
 
 }
